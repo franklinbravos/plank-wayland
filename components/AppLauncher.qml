@@ -458,7 +458,7 @@ Rectangle {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         width: parent.width - 36
-                        text: "启动器设置"
+                        text: "Configurações"
                         color: "white"
                         font.pixelSize: 20
                         font.weight: Font.DemiBold
@@ -484,11 +484,11 @@ Rectangle {
                     width: parent.width
                     spacing: 8
 
-                    Text { text: "显示模式"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
+                    Text { text: "Modo de exibição"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
                     Row {
                         spacing: 8
                         Repeater {
-                            model: [{ "label": "自动", "value": "auto" }, { "label": "紧凑", "value": "compact" }, { "label": "全屏", "value": "fullscreen" }]
+                            model: [{ "label": "Automático", "value": "auto" }, { "label": "Compacto", "value": "compact" }, { "label": "Tela cheia", "value": "fullscreen" }]
                             Rectangle {
                                 width: (settingsPanel.width - 56) / 3
                                 height: 36
@@ -519,11 +519,11 @@ Rectangle {
                     width: parent.width
                     spacing: 8
 
-                    Text { text: "背景样式"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
+                    Text { text: "Estilo de fundo"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
                     Row {
                         spacing: 8
                         Repeater {
-                            model: [{ "label": "玻璃", "value": "glass" }, { "label": "蓝紫", "value": "blue" }, { "label": "深色", "value": "dark" }]
+                            model: [{ "label": "Vidro", "value": "glass" }, { "label": "Azul", "value": "blue" }, { "label": "Escuro", "value": "dark" }]
                             Rectangle {
                                 width: (settingsPanel.width - 56) / 3
                                 height: 36
@@ -554,11 +554,11 @@ Rectangle {
                     width: parent.width
                     spacing: 8
 
-                    Text { text: "图标大小"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
+                    Text { text: "Tamanho dos ícones"; color: "#b8ffffff"; font.pixelSize: 13; font.weight: Font.Medium }
                     Row {
                         spacing: 8
                         Repeater {
-                            model: [{ "label": "小", "value": 0.86 }, { "label": "默认", "value": 1.0 }, { "label": "大", "value": 1.16 }]
+                            model: [{ "label": "Pequeno", "value": 0.86 }, { "label": "Padrão", "value": 1.0 }, { "label": "Grande", "value": 1.16 }]
                             Rectangle {
                                 width: (settingsPanel.width - 56) / 3
                                 height: 36
@@ -592,7 +592,7 @@ Rectangle {
                     Row {
                         width: parent.width
                         height: 34
-                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "显示应用名称"; color: "white"; font.pixelSize: 15 }
+                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "Mostrar nomes"; color: "white"; font.pixelSize: 15 }
                         Rectangle {
                             width: 52; height: 28; radius: 14; anchors.verticalCenter: parent.verticalCenter
                             color: root.showLabels ? "#2d8cff" : "#44ffffff"
@@ -604,7 +604,7 @@ Rectangle {
                     Row {
                         width: parent.width
                         height: 34
-                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "悬停放大"; color: "white"; font.pixelSize: 15 }
+                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "Ampliar ao passar"; color: "white"; font.pixelSize: 15 }
                         Rectangle {
                             width: 52; height: 28; radius: 14; anchors.verticalCenter: parent.verticalCenter
                             color: root.hoverMagnification ? "#2d8cff" : "#44ffffff"
@@ -616,7 +616,7 @@ Rectangle {
                     Row {
                         width: parent.width
                         height: 34
-                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "按下反馈"; color: "white"; font.pixelSize: 15 }
+                        Text { width: parent.width - 64; anchors.verticalCenter: parent.verticalCenter; text: "Feedback ao clicar"; color: "white"; font.pixelSize: 15 }
                         Rectangle {
                             width: 52; height: 28; radius: 14; anchors.verticalCenter: parent.verticalCenter
                             color: root.pressFeedback ? "#2d8cff" : "#44ffffff"
@@ -641,7 +641,7 @@ Rectangle {
 
                         Text {
                             anchors.centerIn: parent
-                            text: root.settings && root.settings.dirty ? "保存设置" : "已保存"
+                            text: root.settings && root.settings.dirty ? "Salvar" : "Salvo"
                             color: "white"
                             font.pixelSize: 15
                             font.weight: Font.Medium
@@ -677,7 +677,7 @@ Rectangle {
                             }
 
                             Text {
-                                text: root.refreshFeedback ? "已刷新" : "刷新应用"
+                                text: root.refreshFeedback ? "Atualizado" : "Atualizar apps"
                                 color: "white"
                                 font.pixelSize: 15
                                 font.weight: Font.Medium
@@ -826,7 +826,7 @@ Rectangle {
 
         Text {
             anchors.centerIn: appGrid
-            text: root.query ? "没有找到匹配应用" : "没有可启动的应用"
+            text: root.query ? "Nenhum app encontrado" : "Nenhum app disponível"
             color: "#bfe8efff"
             font.pixelSize: 20
             font.weight: Font.Medium
