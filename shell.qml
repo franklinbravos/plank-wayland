@@ -327,6 +327,7 @@ ShellRoot {
                         root.menuBottomMargin = dock.menuBottomMargin
                         root.menuOpen = true
                     }
+                    onCloseMenuRequested: root.menuOpen = false
                     onLaunch: root.launcherOpen = !root.launcherOpen
                 }
             }
@@ -389,6 +390,7 @@ ShellRoot {
                         root.menuBottomMargin = dockEdp.menuBottomMargin
                         root.menuOpen = true
                     }
+                    onCloseMenuRequested: root.menuOpen = false
                     onLaunch: root.launcherOpen = !root.launcherOpen
                 }
             }

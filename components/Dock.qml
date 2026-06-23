@@ -45,6 +45,7 @@ Item {
 
     signal activate(var app)
     signal openMenu(var app)
+    signal closeMenuRequested()
     signal launch()
 
     function appKey(app) {
@@ -77,7 +78,14 @@ Item {
 
     // The transparent layer stays larger so magnified icons have room above the bar.
 
-    onDockHoveredChanged: zoomProgress = dockHovered ? 1 : 0
+    onDockHoveredChanged: {
+        zoomProgress = dockHovered ? 1 : 0
+        if (!dockHovered && root.menuOpen) {
+            menuCloseTimer.restart()
+        } else {
+            menuCloseTimer.stop()
+        }
+    }
 
     Behavior on zoomProgress {
         NumberAnimation {
@@ -101,6 +109,13 @@ Item {
             root.dockHovered = false
             root.dockMouseX = -10000
         }
+    }
+
+    Timer {
+        id: menuCloseTimer
+        interval: 500
+        repeat: false
+        onTriggered: root.closeMenuRequested()
     }
 
     // Keep the visible dock frame tight; layerHeight is only the transparent zoom hit area.
@@ -200,6 +215,7 @@ Item {
                 menuOpen: root.menuOpen
                 onActivate: app => root.activate(app)
                 onOpenMenu: app => root.openMenu(app)
+                onCloseMenuRequested: root.closeMenuRequested()
                 onPointerMoved: dockX => root.updatePointer(dockX)
                 onPointerExited: root.schedulePointerLeave()
             }

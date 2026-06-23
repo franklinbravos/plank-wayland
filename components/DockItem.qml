@@ -36,6 +36,7 @@ Rectangle {
 
     signal activate(var app)
     signal openMenu(var app)
+    signal closeMenuRequested()
     signal pointerMoved(real dockX)
     signal pointerExited()
 
@@ -216,7 +217,11 @@ Rectangle {
         onEntered: {
             root.hovered = true
             root.reportPointer(mouseX)
-            if (root.hasMultipleWindows) hoverMenuTimer.restart()
+            if (root.hasMultipleWindows) {
+                hoverMenuTimer.restart()
+            } else if (root.menuOpen) {
+                root.closeMenuRequested()
+            }
         }
         onPositionChanged: function(mouse) { root.reportPointer(mouse.x) }
         onExited: {
