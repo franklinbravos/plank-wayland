@@ -30,7 +30,7 @@ Rectangle {
 
     Timer {
         id: autoCloseTimer
-        interval: 3000
+        interval: 5000
         repeat: false
         onTriggered: root.closeRequested()
     }
