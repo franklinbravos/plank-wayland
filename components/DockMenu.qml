@@ -23,6 +23,7 @@ Rectangle {
     signal settingsRequested()
     signal closeRequested()
     signal focusWindowRequested(var window)
+    signal newWindowRequested(var app)
 
     function t(key) {
         return I18n.text(key, language)
@@ -64,6 +65,33 @@ Rectangle {
             }
 
             Item { Layout.fillWidth: true; visible: !(root.app && root.app.toplevels && root.app.toplevels.length > 1) }
+
+            Text {
+                text: "+"
+                color: root.iconColor
+                font.pixelSize: 16
+                font.bold: true
+                Layout.preferredWidth: 20
+                horizontalAlignment: Text.AlignHCenter
+
+                MouseArea {
+                    id: newWindowArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onEntered: autoCloseTimer.stop()
+                    onExited: autoCloseTimer.restart()
+                    onClicked: {
+                        if (root.app) root.newWindowRequested(root.app)
+                        root.closeRequested()
+                    }
+                }
+                DockTooltip {
+                    text: "Nova janela"
+                    shown: newWindowArea.containsMouse
+                    settings: root.settings
+                }
+            }
 
             Text {
                 text: root.app && root.app.pinned ? "📌" : "📌"

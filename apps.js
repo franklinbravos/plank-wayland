@@ -32,16 +32,36 @@ var items = [
         ]
     },
     {
-        "appId": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
-        "desktopId": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
+        "appId": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Profile_6",
+        "desktopId": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Profile_6",
         "name": "WhatsApp Web",
-        "icon": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
+        "icon": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Profile_6",
         "iconAliases": [],
         "fallback": "C",
         "command": [
             "/opt/google/chrome/google-chrome",
-            "--profile-directory=Default",
+            "--profile-directory=Profile 6",
             "--app-id=hnpfjngllnobngcgfapefoaidbinmjnm"
+        ]
+    },
+    {
+        "appId": "org.telegram.desktop",
+        "desktopId": "org.telegram.desktop",
+        "name": "Telegram",
+        "icon": "org.telegram.desktop",
+        "iconAliases": [],
+        "fallback": "O",
+        "command": [
+            "/usr/bin/flatpak",
+            "run",
+            "--branch=stable",
+            "--arch=x86_64",
+            "--command=Telegram",
+            "--file-forwarding",
+            "org.telegram.desktop",
+            "--",
+            "@@u",
+            "@@"
         ]
     }
 ]

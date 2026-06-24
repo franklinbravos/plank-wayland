@@ -272,7 +272,7 @@ ShellRoot {
     }
 
     Loader {
-        active: root.screensReady
+        active: root.screensReady && Quickshell.screens && screenForMonitor("HDMI-A-1") !== null
         sourceComponent: Component {
             PanelWindow {
                 id: dockWindow
@@ -335,7 +335,7 @@ ShellRoot {
     }
 
     Loader {
-        active: root.screensReady
+        active: root.screensReady && Quickshell.screens && screenForMonitor("eDP-1") !== null
         sourceComponent: Component {
             PanelWindow {
                 id: dockWindowEdp
@@ -397,31 +397,36 @@ ShellRoot {
         }
     }
 
-    PanelWindow {
-        id: launcherWindow
-        visible: true
+    Loader {
+        active: root.screensReady && Quickshell.screens && screenForMonitor("HDMI-A-1") !== null
+        sourceComponent: Component {
+            PanelWindow {
+                id: launcherWindow
+                visible: true
 
-        anchors {
-            top: true
-            bottom: true
-            left: true
-            right: true
-        }
-        color: "transparent"
-        exclusiveZone: 0
-        mask: Region { item: root.launcherOpen ? launcher : null }
-        WlrLayershell.namespace: "plank-wayland-launcher"
-        WlrLayershell.keyboardFocus: root.launcherOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
-        WlrLayershell.layer: WlrLayer.Overlay
-        WlrLayershell.exclusionMode: ExclusionMode.Ignore
-        screen: screenForMonitor("HDMI-A-1")
+                anchors {
+                    top: true
+                    bottom: true
+                    left: true
+                    right: true
+                }
+                color: "transparent"
+                exclusiveZone: 0
+                mask: Region { item: root.launcherOpen ? launcher : null }
+                WlrLayershell.namespace: "plank-wayland-launcher"
+                WlrLayershell.keyboardFocus: root.launcherOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+                WlrLayershell.layer: WlrLayer.Overlay
+                WlrLayershell.exclusionMode: ExclusionMode.Ignore
+                screen: screenForMonitor("HDMI-A-1")
 
-        AppLauncher {
-            id: launcher
-            anchors.fill: parent
-            shown: root.launcherOpen
-            settings: settingsStore
-            onCloseRequested: root.launcherOpen = false
+                AppLauncher {
+                    id: launcher
+                    anchors.fill: parent
+                    shown: root.launcherOpen
+                    settings: settingsStore
+                    onCloseRequested: root.launcherOpen = false
+                }
+            }
         }
     }
 
@@ -459,6 +464,10 @@ ShellRoot {
             onCloseRequested: root.menuOpen = false
             onFocusWindowRequested: win => {
                 root.focusWindowByAddress(win)
+                root.menuOpen = false
+            }
+            onNewWindowRequested: app => {
+                root.launchApp(app)
                 root.menuOpen = false
             }
         }
