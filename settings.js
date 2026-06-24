@@ -30,9 +30,9 @@ var uiLanguage = "pt-BR"
 
 var launcher = {
     "layoutMode": "compact",
-    "backgroundStyle": "dark",
+    "backgroundStyle": "glass",
     "showLabels": true,
-    "hoverMagnification": true,
+    "hoverMagnification": false,
     "pressFeedback": true,
     "iconScale": 1
 }

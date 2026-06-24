@@ -94,7 +94,7 @@ Rectangle {
             }
 
             Text {
-                text: root.app && root.app.pinned ? "📌" : "📌"
+                text: root.app && root.app.pinned ? "▣" : "⊟"
                 color: root.iconColor
                 font.pixelSize: 11
                 Layout.preferredWidth: 20
@@ -123,7 +123,7 @@ Rectangle {
             }
 
             Text {
-                text: "⚙"
+                text: "⊙"
                 color: root.iconColor
                 font.pixelSize: 13
                 Layout.preferredWidth: 20
@@ -146,9 +146,9 @@ Rectangle {
             }
 
             Text {
-                text: "✕"
+                text: "×"
                 color: root.iconColor
-                font.pixelSize: 13
+                font.pixelSize: 15
                 Layout.preferredWidth: 20
                 horizontalAlignment: Text.AlignHCenter
 
